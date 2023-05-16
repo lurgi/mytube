@@ -1,0 +1,8 @@
+extends ../base.pug
+
+block content
+    form(method="POST" enctype="multipart/form-data" minlength="5")
+        input(name="video" type="file" accept="video/*" id="video")
+        input(name="title" type="text" placeholder="Title")
+        textarea(name="description" type="text" rows="7" placeholder="Description" minlength="10")
+        input(type="submit" )

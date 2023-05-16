@@ -1,15 +1,13 @@
 extends ../base.pug
 
 block content
-    include ../partials/header.pug 
-    main 
-        div 
-            span Username : 
-            span=user.username
-        div
-            span E-mail :
-            span=user.email
-        div 
-            a(href="/users/profile/edit") Edit Profile  &rarr;
-        div
-            a(href="/users/profile/passedit") Password Edit &rarr;
+    div 
+        span Username : 
+        span=user.username
+    div
+        span E-mail :
+        span=user.email
+    div 
+        a(href="/users/profile/edit") Edit Profile  &rarr;
+    div
+        a(href="/users/profile/passedit") Password Edit &rarr;

@@ -1,12 +1,10 @@
 extends ../base.pug
 
 block content 
-    include ../partials/header.pug
-    main
-        form(method = "POST")
-            input(name="username" value=user.username)
-            input(name="email" value=user.email)
-            input(name="confirmEmail" placeholder="confirmEmail")
-            input(type="submit")
+    form(method = "POST")
+        input(name="username" value=user.username)
+        input(name="email" value=user.email)
+        input(name="confirmEmail" placeholder="confirmEmail")
+        input(type="submit")
         
     

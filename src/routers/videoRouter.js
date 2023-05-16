@@ -1,16 +1,27 @@
 import express from "express";
 import {
-  video,
+  getVideoUpload,
+  postVideoEdit,
+  postVideoUpload,
   videoDelete,
-  videoEdit,
+  getVideoEdit,
   videoWatch,
 } from "../controllers/videoController";
+import { protectorMiddleware, uploadFiles } from "../middleware";
 
 const videoRouter = express.Router();
 
-videoRouter.get("/upload", video);
+videoRouter
+  .route("/upload")
+  .all(protectorMiddleware)
+  .get(getVideoUpload)
+  .post(uploadFiles.single("video"), postVideoUpload);
 videoRouter.get("/:id", videoWatch);
-videoRouter.get("/:id/edit", videoEdit);
-videoRouter.get("/:id/delete", videoDelete);
+videoRouter
+  .route("/:id/edit")
+  .all(protectorMiddleware)
+  .get(getVideoEdit)
+  .post(postVideoEdit);
+videoRouter.get("/:id/delete", protectorMiddleware, videoDelete);
 
 export default videoRouter;

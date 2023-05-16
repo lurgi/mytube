@@ -1,5 +1,8 @@
 extends base.pug
 
 block content
-    include partials/header
-    div is it work?
+    each video in videos
+        a(href=`/videos/${video._id}`)
+            div=video.title
+            small=video.description
+        hr

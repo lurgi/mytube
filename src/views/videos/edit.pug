@@ -1,0 +1,7 @@
+extends ../base.pug
+
+block content 
+    form(method="POST")
+        input(name="title" value=video.title type="text" minlength="5")
+        textarea(name="description" minlength="10")=video.description
+        input(type="submit")

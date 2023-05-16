@@ -1,0 +1,19 @@
+extends ../base.pug
+
+block content 
+    div 
+        video(src=video.fileURL controls)
+        div 
+            button start/pause
+            span videotime
+            div timeline 
+                input(type="range")
+            button mute 
+            div volume
+                input(type="range")
+    hr
+    if user._id == video.owner
+        div 
+            a(href=`/videos/${video._id}/edit`) Edit &rarr;
+        div
+            a(href=`/videos/${video._id}/delete`) Delete &rarr;
