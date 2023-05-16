@@ -4,17 +4,34 @@ import {
   postJoin,
   getLogin,
   postLogin,
-  passedit,
   profile,
-  edit,
+  getEdit,
+  postEdit,
+  logout,
+  getPassEdit,
+  postPassEdit,
 } from "../controllers/userController";
+import { protectorMiddleware, publicOnlyMiddleware } from "../middleware";
 
 const userRotuer = express.Router();
 
-userRotuer.route("/join").get(getJoin).post(postJoin);
-userRotuer.route("/login").get(getLogin).post(postLogin);
-userRotuer.get("/profile", profile);
-userRotuer.get("/profile/edit", edit);
-userRotuer.get("/profile/passedit", passedit);
+userRotuer.route("/join").all(publicOnlyMiddleware).get(getJoin).post(postJoin);
+userRotuer
+  .route("/login")
+  .all(publicOnlyMiddleware)
+  .get(getLogin)
+  .post(postLogin);
+userRotuer.route("/logout").all(protectorMiddleware).get(logout);
+userRotuer.get("/profile", protectorMiddleware, profile);
+userRotuer
+  .route("/profile/edit")
+  .all(protectorMiddleware)
+  .get(getEdit)
+  .post(postEdit);
+userRotuer
+  .route("/profile/passedit")
+  .all(protectorMiddleware)
+  .get(getPassEdit)
+  .post(postPassEdit);
 
 export default userRotuer;

@@ -1,18 +1,25 @@
-header 
+header
+    div 
+        h1=pageTitle
     nav 
         ul
+            li
+                a(href="/") Home
             if loggedIn
                 li
                     a(href="/")  Upload Video 
                 li
                     a(href="/")  Upload Video 
                 li
-                    a(href="/")  Profile
+                    a(href="/users/profile")  Profile
                 li
-                    a(href="/")  Logout
+                    a(href="/users/logout")  Logout
                 
             else
                 li 
                     a(href="/users/join") Join 
                 li 
                     a(href="/users/login") Login 
+    if errorMessage 
+        div 
+            h2=errorMessage

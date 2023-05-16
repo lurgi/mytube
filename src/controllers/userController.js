@@ -52,12 +52,70 @@ export const postLogin = async (req, res) => {
   req.session.user = user;
   return res.redirect("/");
 };
+export const logout = (req, res) => {
+  req.session.loggedIn = false;
+  req.session.user = {};
+  return res.redirect("/");
+};
 export const profile = (req, res) => {
-  return res.send("<h1>User</h1>");
+  return res.render("users/profile", { pageTitle: "User Profile" });
 };
-export const edit = (req, res) => {
-  return res.send("<h1>profile</h1>");
+export const getEdit = (req, res) => {
+  return res.render("users/edit", { pageTitle: "Profile Edit" });
 };
-export const passedit = (req, res) => {
-  return res.send("<h1>passedit</h1>");
+export const postEdit = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+    body: { username, email, confirmEmail },
+  } = req;
+  if (email !== confirmEmail) {
+    res.render("users/edit", {
+      pageTitle: "Profile Edit",
+      errorMessage: "E-mail is not correct",
+    });
+  }
+  const user = await User.findByIdAndUpdate(_id, {
+    username,
+    email,
+    confirmEmail,
+  });
+
+  req.session.user = user;
+  return res.redirect("/users/profile");
+};
+export const getPassEdit = (req, res) => {
+  return res.render("users/passedit", { pageTitle: "Password Edit" });
+};
+export const postPassEdit = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+    body: { currentPassword, newPassword, confirmPassword },
+  } = req;
+  const userData = await User.findById(_id);
+  const ok = await bcrypt.compare(currentPassword, userData.password);
+  if (!ok) {
+    return res.render("users/passedit", {
+      pageTitle: "Password Edit",
+      errorMessage: "Current Password is not correct",
+    });
+  }
+  if (newPassword !== confirmPassword) {
+    return res.status(400).render("users/passedit", {
+      pageTitle: "Password Edit",
+      errorMessage: "New Password is not same as Confirm Password",
+    });
+  }
+  if (currentPassword === newPassword) {
+    return res.status(400).render("users/passedit", {
+      pageTitle: "Password Edit",
+      errorMessage: "New Password & Current Password are same",
+    });
+  }
+  userData.password = newPassword;
+  await userData.save();
+  return res.redirect("/users/profile");
 };
