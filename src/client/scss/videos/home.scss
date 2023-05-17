@@ -1,0 +1,13 @@
+.videos_div {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .videos_div {
+    grid-template-columns: 1fr 1fr;
+    & .video_container {
+      grid-column: 1/2;
+    }
+  }
+}

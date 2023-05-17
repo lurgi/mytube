@@ -1,23 +1,25 @@
 header
-    div 
-        h1=pageTitle
     nav 
-        ul
-            li
-                a(href="/") Home
-            if loggedIn
-                li
-                    a(href="/videos/upload")  Upload Video 
-                li
-                    a(href="/users/profile")  Profile
-                li
-                    a(href="/users/logout")  Logout
+        div.homeBtn
+            a(href="/")
+                i.fab.fa-youtube 
+                span.home-text MyTube
+        div.search
+            input(placeholder="검색어를 입력하세요")
+            button(type="submit")
+                i.fas.fa-search
+        if loggedIn
+            div.navBtn
+                a(href="/videos/upload")  Upload
+            
+                a(href="/users/profile")  Profile
+            
+                a(href="/users/logout")  Logout
+        else
+            div.navBtn
+                a(href="/users/join") Join 
                 
-            else
-                li 
-                    a(href="/users/join") Join 
-                li 
-                    a(href="/users/login") Login 
+                a(href="/users/login") Login
     if errorMessage 
-        div 
+        div.error-message 
             h2=errorMessage

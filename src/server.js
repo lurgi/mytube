@@ -27,7 +27,7 @@ app.use((req, res, next) => {
   });
 });
 app.use("/videos/uploads", express.static("uploads"));
-app.use("/dist", express.static("dist"));
+app.use("/assets", express.static("assets"));
 
 app.use(middleware);
 app.use("/", globalRouter);
