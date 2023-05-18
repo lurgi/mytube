@@ -1,8 +1,15 @@
 extends ../base.pug
 
 block content 
-    form(method = "POST")
-        input(name="currentPassword" type="password" placeholder="Current Password")
-        input(name="newPassword" type="password" placeholder="New Password")
-        input(name="confirmPassword" type="password" placeholder="Password Confrim")
-        input(type="submit")
+    form(method = "POST").form_container
+        div.form_input_div
+            span Current Password
+            input(name="currentPassword" type="password" placeholder="Current Password")
+        div.form_input_div
+            span New Password
+            input(name="newPassword" type="password" placeholder="New Password")
+        div.form_input_div
+            span Confrim New Password
+            input(name="confirmPassword" type="password" placeholder="Password Confrim")
+        div.form_btn_div
+            button(type="submit") Password Change

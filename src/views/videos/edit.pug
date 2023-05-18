@@ -1,7 +1,12 @@
 extends ../base.pug
 
 block content 
-    form(method="POST")
-        input(name="title" value=video.title type="text" minlength="5")
-        textarea(name="description" minlength="10")=video.description
-        input(type="submit")
+    form(method="POST").form_container
+        div.form_input_div
+            sapn Title
+            input(name="title" value=video.title type="text" minlength="5")
+        div.form_input_div
+            span Description
+            textarea(name="description" minlength="10")=video.description
+        div.form_btn_div
+            button(type="submit") Video Upload

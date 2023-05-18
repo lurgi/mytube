@@ -1,0 +1,26 @@
+.container_div {
+  font-size: 18px;
+  margin-bottom: 10px;
+  & span {
+    margin-right: 5px;
+    &:first-child {
+      color: rgb(156, 156, 156);
+    }
+  }
+}
+
+.container_link_btn {
+  margin-top: 10px;
+  border: 2px solid gray;
+  width: 40%;
+  border-radius: 100px;
+  padding: 10px 15px;
+  min-width: 200px;
+  &:hover {
+    background-color: whitesmoke;
+    color: gray;
+    border: 2px solid $bg;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+}

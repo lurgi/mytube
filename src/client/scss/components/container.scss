@@ -1,0 +1,68 @@
+@import "../config/variable.scss";
+
+.form_container {
+  width: 60%;
+  border: 1px solid gray;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 360px;
+  & * {
+    margin-bottom: 5px;
+  }
+}
+
+.form_file_div {
+  display: flex;
+  font-size: 20px;
+  & span {
+    margin-right: 15px;
+  }
+}
+.form_input_div {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  & input,
+  textarea {
+    background: none;
+    border: 1px solid gray;
+    padding: 10px 15px;
+    border-radius: 7px;
+    color: whitesmoke;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+.form_btn_div {
+  font-size: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  & button {
+    padding: 10px;
+    background: none;
+    border-radius: 20px;
+    outline: none;
+    border: 2px solid gray;
+    color: whitesmoke;
+    width: 40%;
+    font-size: 18px;
+    &:hover {
+      background-color: whitesmoke;
+      color: gray;
+      border: 2px solid $bg;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .form_container {
+    width: 600px;
+  }
+}

@@ -1,8 +1,15 @@
 extends ../base.pug
 
 block content
-    form(method="POST" enctype="multipart/form-data" minlength="5")
-        input(name="video" type="file" accept="video/*" id="video")
-        input(name="title" type="text" placeholder="Title")
-        textarea(name="description" type="text" rows="7" placeholder="Description" minlength="10")
-        input(type="submit" )
+    form(method="POST" enctype="multipart/form-data" minlength="5").form_container
+        div.form_file_div
+            span File
+            input(name="video" type="file" accept="video/*" id="video")
+        div.form_input_div
+            span Title
+            input(name="title" type="text" placeholder="Title")
+        div.form_input_div
+            span Description
+            textarea(name="description" type="text" rows="7" placeholder="Description" minlength="10")
+        div.form_btn_div
+            button(type="submit" ) Upload

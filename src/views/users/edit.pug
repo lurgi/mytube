@@ -1,10 +1,17 @@
 extends ../base.pug
 
 block content 
-    form(method = "POST")
-        input(name="username" value=user.username)
-        input(name="email" value=user.email)
-        input(name="confirmEmail" placeholder="confirmEmail")
-        input(type="submit")
+    form(method = "POST").form_container
+        div.form_input_div
+            span Username
+            input(name="username" value=user.username)
+        div.form_input_div
+            span E-mail
+            input(name="email" value=user.email)
+        div.form_input_div
+            span Confrim E-mail
+            input(name="confirmEmail" placeholder="confirmEmail")
+        div.form_btn_div
+            button(type="submit") Profile Edit
         
     

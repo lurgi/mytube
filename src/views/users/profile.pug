@@ -1,13 +1,12 @@
 extends ../base.pug
 
 block content
-    div 
-        span Username : 
-        span=user.username
-    div
-        span E-mail :
-        span=user.email
-    div 
-        a(href="/users/profile/edit") Edit Profile  &rarr;
-    div
-        a(href="/users/profile/passedit") Password Edit &rarr;
+    div.form_container
+        div.container_div 
+            span Username :
+            span=user.username
+        div.container_div
+            span E-mail :
+            span=user.email
+        a(href="/users/profile/edit").container_link_btn  Edit Profile  &rarr;
+        a(href="/users/profile/passedit").container_link_btn  Password Edit &rarr;

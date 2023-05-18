@@ -4,6 +4,7 @@ const path = require("path"); // path를 만들어주는 함수
 module.exports = {
   entry: {
     main: "./src/client/js/main.js",
+    video: "./src/client/js/video.js",
   }, // 변경하고자 하는 파일의 경로
   watch: true,
   mode: "development",

@@ -1,0 +1,98 @@
+@import "../config/variable.scss";
+
+header {
+  & nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    & div {
+      width: 33%;
+    }
+  }
+}
+.homeBtn {
+  font-size: 35px;
+  color: $red;
+  & a {
+    display: flex;
+    align-items: center;
+  }
+}
+.home-text {
+  font-size: 20px;
+
+  font-weight: 500;
+  color: whitesmoke;
+  margin-left: 2px;
+}
+
+.search {
+  position: relative;
+  height: 35px;
+  border-radius: 50px;
+  border: 1px solid gray;
+  overflow: hidden;
+  & input {
+    width: 100%;
+    height: 100%;
+    padding: 1px 8px;
+    outline: none;
+    border: none;
+    background-color: $bg;
+    color: whitesmoke;
+  }
+  & button {
+    height: 100%;
+    width: 20%;
+    position: absolute;
+    right: 0px;
+    border: none;
+    outline: none;
+    background: none;
+    background-color: gray;
+    & i {
+      color: whitesmoke;
+      font-size: medium;
+    }
+  }
+}
+.navBtn {
+  display: flex;
+  justify-content: end;
+  & a {
+    margin: 0px 5px;
+
+    &:hover {
+      color: gray;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+
+@keyframes errorAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
+.error-message {
+  position: absolute;
+  text-align: center;
+  top: 55px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 100px;
+  padding: 5px 10px;
+  background-color: pink;
+  width: 200px;
+  color: black;
+  font-weight: 600;
+  animation: errorAnimation 0.5s ease-in-out forwards;
+  animation-delay: 5s;
+}
