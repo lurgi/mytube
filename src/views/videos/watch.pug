@@ -1,7 +1,7 @@
 extends ../base.pug
 
 block content 
-    div.video_detail_container#videoContainer
+    div.video_detail_container#videoContainer(data-id=video._id)
         video(src=video.fileURL)
         div#videoController
             input(type="range" step="1" value=0 min=0)#timeLine
@@ -18,15 +18,24 @@ block content
     div.video_detail_info
         div.video_detail_title
             h1=video.title
+        div.video_detail_description
+            h1=video.description
         div.video_detail_owner
-            div.video_detail_owner_avatar
             div.video_detail_owner_info
-                span 소유주
-                small 구독자 1270B
+                span=video.owner.username
+                small 구독자 178M
             div.video_detail_control
-                if user._id == video.owner
+                if user._id == video.owner._id
                     div.video_link_btn
                         a(href=`/videos/${video._id}/edit`) Video Edit &rarr;
                     div.video_link_btn
                         a(href=`/videos/${video._id}/delete`) Video Delete &rarr;
-    script(src="/assets/js/video.js") 
+    if loggedIn
+        form.comment.form#commentForm
+            input(name="comment" type="text" required placeholder="댓글 추가...")#comment
+            button(type="submit")#commentBtn 댓글
+    div.comments_container
+        each comment in video.comments
+            div=comment.comment
+    script(src="/assets/js/video.js")
+    script(src="/assets/js/comment.js") 

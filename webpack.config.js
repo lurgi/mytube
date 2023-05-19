@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     main: "./src/client/js/main.js",
     video: "./src/client/js/video.js",
+    comment: "./src/client/js/comment.js",
   }, // 변경하고자 하는 파일의 경로
   watch: true,
   mode: "development",

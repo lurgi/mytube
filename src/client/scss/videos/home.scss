@@ -6,7 +6,7 @@
 }
 .video_detail {
   display: flex;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   border-bottom: 1px solid gray;
   & .uploader_avatar {
     width: 36px;
@@ -24,9 +24,9 @@
 
   & span {
     font-size: 16px;
-    margin-bottom: 5px;
   }
   & small {
+    margin-right: 10px;
     font-size: 14px;
     color: gray;
   }

@@ -4,8 +4,8 @@ header
             a(href="/")
                 i.fab.fa-youtube 
                 span.home-text MyTube
-        div.search
-            input(placeholder="검색어를 입력하세요")
+        form(method="POST").search
+            input(name="keyword" required type="text" placeholder="검색어를 입력하세요")
             button(type="submit")
                 i.fas.fa-search
         if loggedIn

@@ -1,3 +1,4 @@
+import Comment from "../models/Comment";
 import User from "../models/User";
 import Video from "../models/Video";
 
@@ -25,7 +26,7 @@ export const postVideoUpload = async (req, res) => {
 };
 export const videoWatch = async (req, res) => {
   const { id } = req.params;
-  const video = await Video.findById(id);
+  const video = await Video.findById(id).populate("owner").populate("comments");
   if (!video) {
     return res.redirect("/");
   }
@@ -72,4 +73,42 @@ export const videoDelete = async (req, res) => {
     await Video.findByIdAndDelete(id);
   }
   return res.redirect("/");
+};
+export const registerView = async (req, res) => {
+  const { id } = req.params;
+  const video = await Video.findById(id);
+  if (!video) {
+    return res.sendStatus(404);
+  }
+  video.views++;
+  await video.save();
+  return res.sendStatus(200);
+};
+
+export const createComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { text },
+    session: {
+      user: { _id },
+    },
+  } = req;
+  const video = await Video.findById(id);
+  if (!video) {
+    return res.sendStatus(400);
+  }
+  const user = await User.findById(_id);
+  if (!user) {
+    return res.sendStatus(400);
+  }
+  const comment = await Comment.create({
+    comment: text,
+    user: _id,
+    video: id,
+  });
+  video.comments.push(comment);
+  await video.save();
+  user.comments.push(comment);
+  await user.save();
+  return res.sendStatus(201);
 };

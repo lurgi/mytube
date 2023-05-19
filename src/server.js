@@ -6,6 +6,7 @@ import session from "express-session";
 import { middleware } from "./middleware";
 import MongoStore from "connect-mongo";
 import "./db";
+import apiRouter from "./routers/apiRouter";
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
@@ -33,5 +35,6 @@ app.use(middleware);
 app.use("/", globalRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRotuer);
+app.use("/api", apiRouter);
 
 export default app;

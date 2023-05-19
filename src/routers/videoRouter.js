@@ -6,6 +6,7 @@ import {
   videoDelete,
   getVideoEdit,
   videoWatch,
+  postComment,
 } from "../controllers/videoController";
 import { protectorMiddleware, uploadFiles } from "../middleware";
 
@@ -16,7 +17,7 @@ videoRouter
   .all(protectorMiddleware)
   .get(getVideoUpload)
   .post(uploadFiles.single("video"), postVideoUpload);
-videoRouter.get("/:id", videoWatch);
+videoRouter.route("/:id").get(videoWatch);
 videoRouter
   .route("/:id/edit")
   .all(protectorMiddleware)

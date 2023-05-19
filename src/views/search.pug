@@ -1,0 +1,9 @@
+extends base.pug
+include mixins/video
+
+block content
+    div.videos_div
+        each video in videos
+            +video(video)
+        else 
+            h3 Nothing Found

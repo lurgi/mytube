@@ -165,8 +165,13 @@ a {
   color: inherit;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+}
 header nav {
   width: 100%;
+  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -195,6 +200,8 @@ header nav div {
 .search {
   position: relative;
   height: 35px;
+  width: 40%;
+  max-width: 360px;
   border-radius: 50px;
   border: 1px solid gray;
   overflow: hidden;
@@ -211,6 +218,7 @@ header nav div {
 .search button {
   height: 100%;
   width: 20%;
+  max-width: 50px;
   position: absolute;
   right: 0px;
   border: none;
@@ -272,6 +280,10 @@ header nav div {
   height: 200px;
   background-color: beige;
   border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.video_title {
   margin-bottom: 8px;
 }
 
@@ -352,7 +364,7 @@ header nav div {
 
 .video_detail {
   display: flex;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   border-bottom: 1px solid gray;
 }
 .video_detail .uploader_avatar {
@@ -371,9 +383,9 @@ header nav div {
 }
 .video_info span {
   font-size: 16px;
-  margin-bottom: 5px;
 }
 .video_info small {
+  margin-right: 10px;
   font-size: 14px;
   color: gray;
 }
@@ -436,6 +448,12 @@ header nav div {
   font-size: 20px;
   margin-top: 15px;
   margin-bottom: 10px;
+}
+
+.video_detail_description {
+  font-size: 18px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .video_detail_info {

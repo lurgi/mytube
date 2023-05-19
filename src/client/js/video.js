@@ -90,7 +90,16 @@ video.addEventListener(
   "loadedmetadata",
   () => (timeline.max = Math.floor(video.duration))
 );
+video.addEventListener("timeupdate", () => {
+  timeline.value = video.currentTime;
+});
 const handleTimeline = () => {
   video.currentTime = timeline.value;
 };
 timeline.addEventListener("input", handleTimeline);
+
+const handleEnded = () => {
+  const { id } = videoContainer.dataset;
+  fetch(`/api/videos/${id}/views`, { method: "POST" });
+};
+video.addEventListener("ended", handleEnded);
