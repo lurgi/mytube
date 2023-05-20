@@ -110,5 +110,25 @@ export const createComment = async (req, res) => {
   await video.save();
   user.comments.push(comment);
   await user.save();
-  return res.sendStatus(201);
+  return res.status(201).json({ newCommentId: comment._id });
+};
+export const deleteComment = async (req, res) => {
+  const {
+    params: { videoId, commentId },
+    session: {
+      user: { _id },
+    },
+  } = req;
+  const comment = await Comment.findById(commentId);
+  if (comment.user + "" !== _id + "") {
+    return res.sendStatus(400);
+  }
+  await User.findByIdAndUpdate(_id, {
+    $pull: { comments: commentId },
+  });
+  await Video.findByIdAndUpdate(videoId, {
+    $pull: { comments: commentId },
+  });
+  await Comment.findByIdAndDelete(commentId);
+  return res.sendStatus(200);
 };

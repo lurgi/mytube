@@ -4,6 +4,10 @@
   & video {
     width: 100%;
   }
+  & i:hover,
+  button:hover {
+    cursor: pointer;
+  }
 }
 #videoController {
   position: absolute;

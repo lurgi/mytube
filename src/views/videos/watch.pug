@@ -34,8 +34,11 @@ block content
         form.comment.form#commentForm
             input(name="comment" type="text" required placeholder="댓글 추가...")#comment
             button(type="submit")#commentBtn 댓글
-    div.comments_container
-        each comment in video.comments
-            div=comment.comment
+    div.comments_container#commentContainer
+        each comment in video.comments.reverse()
+            div
+                div=comment.comment
+                if user._id+"" === comment.user._id+""
+                    button(data-id=comment._id).commentDelete 삭제
     script(src="/assets/js/video.js")
     script(src="/assets/js/comment.js") 
